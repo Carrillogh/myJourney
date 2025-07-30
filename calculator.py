@@ -1,5 +1,5 @@
-x = float(input("enter num: "))
-y = float(input("enter num: "))
+x = float(input("enter your first number: "))
+y = float(input("enter your second number: "))
 operator = input("enter operator(+,-,*,/): ")
 if operator == '+':
     print(f"{x} + {y} = {x+y}")
