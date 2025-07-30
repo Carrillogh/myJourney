@@ -10,4 +10,4 @@ elif operator == '*':
 elif operator == '/':
     print(f"{x} / {y} = {x/y}")
 else:
-    print("invalid")
+    print("invalid selection, please try again.")
