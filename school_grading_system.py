@@ -116,3 +116,22 @@ while True:
                 break
         else:
             print("Student not found.")
+    elif choice == '8':
+        if not gradebook:
+            print("No students in the gradebook.")
+        else:
+            print("\nList of all students:")
+            for student in gradebook:
+                print(f"ID: {student['id']}, Name: {student['name']}")
+                if student["grades"]:
+                    print("Courses and Grades:")
+                    for course, grade in student["grades"].items():
+                        print(f"  {course}: {grade}")
+                else:
+                    print("  No Grades Yet")
+    elif choice == '9':
+        print("Exiting the gradebook system. Goodbye!")
+        break
+else:
+    print("Invalid choice. Please try again.")
+
