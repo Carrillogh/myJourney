@@ -27,6 +27,8 @@ actions = [
     "Search for students studying a particular course",
     "Delete a student",
     "Delete a student grading information",
+    "List all students with their ID, Name, Grade, Course",
+    "Quit"
 ]
 while True:
     for number, action in enumerate(actions, start=1):
@@ -101,3 +103,16 @@ while True:
                 break
         else:
             print("student not found.")
+    elif choice == '7':
+        student_id = input("Enter student ID to delete grading information: ")
+        for student in gradebook:
+            if student["id"] == student_id:
+                course = input("Enter course name to delete grade: ")
+                if course in student["grades"]:
+                    del student["grades"][course]
+                    print(f"Grade for {course} deleted successfully.")
+                else:
+                    print("No grade found for that course.")
+                break
+        else:
+            print("Student not found.")
