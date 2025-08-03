@@ -41,7 +41,8 @@ while True:
     if choice == '1':
         student_id = input("Enter student ID: ")
         name = input("Enter student name: ").title()
-        gradebook.append({"id": student_id, "name": name, "grades": {}})
+        gradebook.append({"id": student_id, "name": name,
+                         "grades": {}, "marks": {}})
         print(f"{name.title()} added successfully.")
 
     # Adding student ID, course and grade
@@ -50,7 +51,9 @@ while True:
         for student in gradebook:
             if student["id"] == student_id:
                 course = input("Enter course name: ")
+                marks = input(f"Enter the marks for {course.title()}: ")
                 grade = input(f"Enter the grade for {course.title()}: ")
+                student["marks"][course] = marks
                 student["grades"][course] = grade
                 print(f"Grades updated for {student['name']}.")
                 break
@@ -78,9 +81,9 @@ while True:
             if student["id"] == student_id:
                 print(f"\nID: {student['id']}, Name: {student['name']}")
                 if student["grades"]:
-                    print("Course and Grades")
-                    for course, grade in student["grades"].items():
-                        print(f" {course}: {grade}")
+                    print("Course, Marks and Grades")
+                    for (course, marks, grade) in student["grades"].items():
+                        print(f" {course}: {marks}: {grade}")
                         break
                 else:
                     print("No Grades Yet")
@@ -134,4 +137,3 @@ while True:
         break
 else:
     print("Invalid choice. Please try again.")
-
