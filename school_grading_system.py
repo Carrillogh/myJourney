@@ -1,9 +1,4 @@
-# Features
-# - Deposit
-# - Withdrawal
-# - Balance
 
-# -
 """This is the entry point for the student gradebook system.
 
 The gradebook system will handle the following tasks:
