@@ -26,3 +26,11 @@ while True:
             print(f"Deposited: ${amount:.2f}")
         else:
             print("Invalid amount. Please enter a positive number.")
+
+    # Withdrawal
+    elif choice == '2':
+        amount = float(input("Enter amount to withdraw: "))
+        if amount > 0:
+            print(f"Withdrew: ${amount:.2f}")
+        else:
+            print("Invalid amount. Please enter amount or check amount before redrawal.")
