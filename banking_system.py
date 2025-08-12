@@ -33,4 +33,4 @@ while True:
         if amount > 0:
             print(f"Withdrew: ${amount:.2f}")
         else:
-            print("Invalid amount. Please enter amount or check amount before redrawal.")
+            print("Invalid amount. Please enter amount or check amount before withdrawal.")

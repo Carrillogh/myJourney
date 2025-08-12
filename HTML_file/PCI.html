@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PCI MICHEL CAMP</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  h1 {
+    font-size: 5vw;
+    margin-bottom: 5vh;
+  }
+  #timer {
+    font-size: 20vw;
+  }
+  #timeUp {
+    font-size: 10vw;
+    font-weight: bold;
+    display: none;
+    color: yellow;
+  }
+  #logo {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    max-width: 15vw;
+    max-height: 15vh;
+    height: auto;
+  }
+
+</style>
+</head>
+<body>
+
+<img src="file:///Z:/perez_logo/perez_logo.jpeg" alt="Logo" id="logo">
+<h1>PCI-MICHEL CAMP</h1>
+<div id="timer">00:00</div>
+
+<audio id="beep" src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"></audio>
+
+<script>
+let countdown;
+let alertTime = 40; // seconds before end to show TIME IS UP
+let minutes = 1; // <<< SET YOUR TIME HERE
+let time = minutes * 60;
+let beep = document.getElementById('beep');
+
+function startTimer() {
+  // Go full screen
+  document.documentElement.requestFullscreen().catch(err => {
+    console.log("Fullscreen request failed:", err);
+  });
+
+  countdown = setInterval(() => {
+    if (time > alertTime) {
+      let m = Math.floor(time / 60);
+      let s = time % 60;
+      document.getElementById('timer').innerHTML =
+        (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+    } 
+    else {
+      // Show TIME IS UP and blink
+      document.getElementById('timer').innerHTML = 
+        (time % 2 === 0) ? "WRAP UP" : "";
+      document.body.style.background = "blue";
+    }
+
+    if (time <= 0) {
+      clearInterval(countdown);
+      beep.play();
+      document.getElementById('timer').innerHTML = 
+        (time % 2 === 0) ? "TIME IS UP" : "";
+      document.body.style.background = "red";
+    }
+    time--;
+  }, 1000);
+}
+
+// Start on click
+document.addEventListener("click", startTimer, { once: true });
+</script>
+
+</body>
+</html>
