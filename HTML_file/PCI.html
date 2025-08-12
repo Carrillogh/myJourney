@@ -16,18 +16,36 @@
     justify-content: center;
     align-items: center;
   }
+  /* Watermark logo */
+  #watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.20; /* Makes it faint */
+    width: 50%;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    z-index: 0;
+    pointer-events: none;
+  }
+
   h1 {
     font-size: 5vw;
     margin-bottom: 5vh;
+    z-index: 1;
   }
   #timer {
     font-size: 20vw;
+    z-index: 1;
   }
   #timeUp {
     font-size: 10vw;
     font-weight: bold;
     display: none;
     color: yellow;
+    z-index: 1;
   }
   #logo {
     position: absolute;
@@ -42,7 +60,10 @@
 </head>
 <body>
 
+<!-- Watermark Logo -->
 <img src="file:///Z:/perez_logo/perez_logo.jpeg" alt="Logo" id="logo">
+
+<img src="file:///Z:/perez_logo/perez_logo.jpeg" alt="watermark" id="watermark">
 <h1>PCI-MICHEL CAMP</h1>
 <div id="timer">00:00</div>
 
