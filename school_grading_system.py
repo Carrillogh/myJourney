@@ -32,44 +32,57 @@ while True:
     # getting to choose your option
     choice = input("Enter your choice: ")
 
+    def adding_new_student():
+        name = input("Enter student name: ").title()
+        student_id = input("Enter student ID: ")
+        gradebook.append({"name": name, "id": student_id,
+                         "grades": {}, "marks": {}})
+        print(f"{name.title()} successfully added.")
+
+    def add_student_grades():
+        student_id = input("Enter student ID to add grades: ")
+        if student_id:
+            course = input("Enter course name: ")
+            marks = input(f"Enter the marks for {course.title()}: ")
+            grade = input(f"Enter the grade for {course.title()}: ")
+            student["marks"][course] = marks
+            student["grades"][course] = grade
+            print(f"Grades updated for {student['name']}.")
+        else:
+            print("student not found.")
+
+    # def search_student_by_name():
+     #   name = input("Enter name to search: ")
+      #  if student['name'].lower() == name.lower():
+       #     print(
+        #        f"\nName: {student['name']}, ID: {student['id']}, Course: {course['course']}, Mark: {'marks'}, Grade: {'grade'}")
+        # else:
+         #   print("no student found with that name")
+
     # Add student name and ID
     if choice == '1':
-        student_id = input("Enter student ID: ")
-        name = input("Enter student name: ").title()
-        gradebook.append({"id": student_id, "name": name,
-                         "grades": {}, "marks": {}})
-        print(f"{name.title()} added successfully.")
+        adding_new_student()
 
     # Adding student ID, course and grade
     elif choice == '2':
-        student_id = input("Enter student ID to add grades: ")
-        for student in gradebook:
-            if student["id"] == student_id:
-                course = input("Enter course name: ")
-                marks = input(f"Enter the marks for {course.title()}: ")
-                grade = input(f"Enter the grade for {course.title()}: ")
-                student["marks"][course] = marks
-                student["grades"][course] = grade
-                print(f"Grades updated for {student['name']}.")
-                break
-        else:
-            print("Student not found.")
+        add_student_grades()
 
     # Search for student by name
-    elif choice == '3':
-        name = input("Enter name to search: ")
-        for student in gradebook:
-            if student["name"].lower() == name.lower():
-                print(f"\nID: {student['id']}, Name: {student['name']}")
-                if student["grades"]:
-                    print("Courses and Grades")
-                    for course, grade in student["grades"].items():
-                        print(f" {course}: {grade}")
-                else:
-                    print("No Grades Yet")
-                    break
-            else:
-                print("no student found with that name.")
+   # elif choice == '3':
+    #    search_student_by_name()
+    #    name = input("Enter name to search: ")
+     #   for student in gradebook:
+      #      if student["name"].lower() == name.lower():
+       #         print(f"\nID: {student['id']}, Name: {student['name']}")
+        #        if student["grades"]:
+        #           print("Courses and Grades")
+        #          for course, grade in student["grades"].items():
+        #             print(f" {course}: {grade}")
+        #    else:
+        #       print("No Grades Yet")
+        #      break
+        # else:
+        #   print("no student found with that name.")
     elif choice == '4':
         student_id = input("Enter student ID to search: ")
         for student in gradebook:

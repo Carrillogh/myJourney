@@ -37,14 +37,7 @@
     z-index: 1;
   }
   #timer {
-    font-size: 20vw;
-    z-index: 1;
-  }
-  #timeUp {
-    font-size: 10vw;
-    font-weight: bold;
-    display: none;
-    color: yellow;
+    font-size: 15vw;
     z-index: 1;
   }
   #logo {
@@ -55,15 +48,27 @@
     max-height: 15vh;
     height: auto;
   }
-
+  #currentTime {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 8vw;
+    color: white;
+    z-index: 2;
+  }
 </style>
 </head>
 <body>
 
-<!-- Watermark Logo -->
+<!-- Current Time -->
+<div id="currentTime"></div>
+
+<!-- Logo at top-right -->
 <img src="file:///Z:/perez_logo/perez_logo.jpeg" alt="Logo" id="logo">
 
+<!-- Watermark in center -->
 <img src="file:///Z:/perez_logo/perez_logo.jpeg" alt="watermark" id="watermark">
+
 <h1>PCI-MICHEL CAMP</h1>
 <div id="timer">00:00</div>
 
@@ -71,7 +76,7 @@
 
 <script>
 let countdown;
-let alertTime = 40; // seconds before end to show TIME IS UP
+let alertTime = 40; // seconds before end to show WRAP UP
 let minutes = 1; // <<< SET YOUR TIME HERE
 let time = minutes * 60;
 let beep = document.getElementById('beep');
@@ -89,14 +94,14 @@ function startTimer() {
       document.getElementById('timer').innerHTML =
         (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
     } 
-    else {
-      // Show TIME IS UP and blink
+    else if (time > 0) {
+      // Show WRAP UP and blink
       document.getElementById('timer').innerHTML = 
         (time % 2 === 0) ? "WRAP UP" : "";
       document.body.style.background = "blue";
     }
-
-    if (time <= 0) {
+    else {
+      // Time is up
       clearInterval(countdown);
       beep.play();
       document.getElementById('timer').innerHTML = 
@@ -106,6 +111,17 @@ function startTimer() {
     time--;
   }, 1000);
 }
+
+// Show current clock
+function updateCurrentTime() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    document.getElementById("currentTime").textContent = `${hours}:${minutes}:${seconds}`;
+}
+setInterval(updateCurrentTime, 1000);
+updateCurrentTime();
 
 // Start on click
 document.addEventListener("click", startTimer, { once: true });
