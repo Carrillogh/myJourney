@@ -37,11 +37,14 @@ while True:
         if balance < amount:
             print("Not Enough balance")
         else:
-            balance > amount
-            balance -= amount
-            print(f"Withdrawal: ${amount:.2f} \nNew balance: ${balance:.2f}")
+            if amount < 0:
+                print('invalid amount')
+            else:
+                balance -= amount
+                print(
+                    f"Withdrawal: ${amount:.2f} \nNew balance: ${balance:.2f}")
 
-    # Balance
+    # Balances
     elif choice == '3':
         print(f"Current balance: ${balance:.2f}")
 
