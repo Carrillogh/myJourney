@@ -24,11 +24,11 @@ while True:
     # Deposit
     if choice == '1':
         amount = float(input("Enter amount to deposit: "))
-        balance += amount
-        if amount > 0:
-            print(f"Deposited: ${amount:.2f} \nNew balance: ${balance:.2f}")
+        if amount < 0:
+            print(f"invalid amount")
         else:
-            print("Invalid amount. Please enter a positive number.")
+            balance += amount
+            print(f"Deposited: ${amount:.2f} \nNew balance: ${balance:.2f}")
 
     # Withdrawal
     elif choice == '2':
