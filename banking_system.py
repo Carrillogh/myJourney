@@ -26,19 +26,20 @@ while True:
         amount = float(input("Enter amount to deposit: "))
         balance += amount
         if amount > 0:
-            print(f"Deposited: ${amount:.2f}. New balance: ${balance:.2f}")
+            print(f"Deposited: ${amount:.2f} \nNew balance: ${balance:.2f}")
         else:
             print("Invalid amount. Please enter a positive number.")
 
     # Withdrawal
     elif choice == '2':
+        print(f"${balance:.2f}")
         amount = float(input("Enter amount to withdraw: "))
-        balance -= amount
-        if amount > 0:
-            print(f"Withdrew: ${amount:.2f}. New balance: ${balance:.2f}")
+        if balance < amount:
+            print("Not Enough balance")
         else:
-            print(
-                "Invalid amount. Please enter amount or check amount before withdrawal.")
+            balance > amount
+            balance -= amount
+            print(f"Withdrawal: ${amount:.2f} \nNew balance: ${balance:.2f}")
 
     # Balance
     elif choice == '3':
