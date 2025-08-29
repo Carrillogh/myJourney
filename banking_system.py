@@ -9,11 +9,12 @@ actions = [
     'Deposit',
     'Withdrawal',
     'Balance',
+    'Loan',
     'Exit'
 ]
 
 balance = 0
-
+max_balance = balance
 while True:
     for number, action in enumerate(actions, start=1):
         print(f"{number}. {action}")
@@ -48,8 +49,17 @@ while True:
     elif choice == '3':
         print(f"Current balance: ${balance:.2f}")
 
-    # Exit
+    # Loan
     elif choice == '4':
+        balance_history = [50000]
+        loan_amount = float(input("Enter loan amount to request: "))
+        if max(balance_history) >= 50000:
+            print('approved for vetting')
+        else:
+            print('Denied due to low savings history')
+
+    # Exit
+    elif choice == '5':
         print("Thank you for using GH Bank. Goodbye!")
         break
 
