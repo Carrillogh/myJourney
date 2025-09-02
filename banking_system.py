@@ -14,13 +14,13 @@ actions = [
 ]
 
 balance = 0
-max_balance = balance
+balance_history = 0
 while True:
     for number, action in enumerate(actions, start=1):
         print(f"{number}. {action}")
 
     # getting to choose your option
-    choice = input("Enter your choice(1-4): ")
+    choice = input("Enter your choice(1-5): ")
 
     # Deposit
     if choice == '1':
@@ -29,6 +29,7 @@ while True:
             print(f"invalid amount")
         else:
             balance += amount
+            balance_history += amount
             print(f"Deposited: ${amount:.2f} \nNew balance: ${balance:.2f}")
 
     # Withdrawal
@@ -51,10 +52,10 @@ while True:
 
     # Loan
     elif choice == '4':
-        balance_history = [50000]
+        required_deposit = 50000
         loan_amount = float(input("Enter loan amount to request: "))
-        if max(balance_history) >= 50000:
-            print('approved for vetting')
+        if balance_history >= required_deposit:
+            print('Approved for vetting')
         else:
             print('Denied due to low savings history')
 
